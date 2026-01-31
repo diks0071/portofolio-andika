@@ -1,0 +1,587 @@
+/* ===== CUSTOM CURSOR ANIMATIONS ===== */
+.cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transition: transform 0.1s ease;
+}
+
+.cursor-follower {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--primary-glow);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.3s ease;
+}
+
+/* ===== GLITCH EFFECT ===== */
+.glitch-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.glitch {
+    position: relative;
+    display: inline-block;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--dark);
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--accent);
+    animation: glitch-1 2s infinite linear alternate-reverse;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: 2px 0 var(--primary);
+    animation: glitch-2 3s infinite linear alternate-reverse;
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+}
+
+@keyframes glitch-1 {
+    0% { clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); }
+    5% { clip-path: polygon(0 15%, 100% 15%, 100% 60%, 0 60%); }
+    10% { clip-path: polygon(0 30%, 100% 30%, 100% 75%, 0 75%); }
+    15% { clip-path: polygon(0 45%, 100% 45%, 100% 90%, 0 90%); }
+    20% { clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%); }
+    100% { clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%); }
+}
+
+@keyframes glitch-2 {
+    0% { clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%); }
+    5% { clip-path: polygon(0 70%, 100% 70%, 100% 100%, 0 100%); }
+    10% { clip-path: polygon(0 85%, 100% 85%, 100% 100%, 0 100%); }
+    15% { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); }
+    20% { clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); }
+    100% { clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); }
+}
+
+/* ===== FLOATING ANIMATIONS ===== */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}
+
+.float-element {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float-x {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(20px);
+    }
+}
+
+.float-x {
+    animation: float-x 8s ease-in-out infinite;
+}
+
+/* ===== PULSE ANIMATIONS ===== */
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 var(--primary-glow);
+    }
+    50% {
+        box-shadow: 0 0 20px 10px var(--primary-glow);
+    }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse-accent {
+    0%, 100% {
+        box-shadow: 0 0 0 0 var(--accent-glow);
+    }
+    50% {
+        box-shadow: 0 0 20px 10px var(--accent-glow);
+    }
+}
+
+.pulse-accent {
+    animation: pulse-accent 2s infinite;
+}
+
+/* ===== ROTATE ANIMATIONS ===== */
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate {
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate-reverse {
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+.rotate-reverse {
+    animation: rotate-reverse 30s linear infinite;
+}
+
+/* ===== NEON GLOW ===== */
+@keyframes neon-glow {
+    0%, 100% {
+        text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary);
+    }
+    50% {
+        text-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary), 0 0 15px var(--primary);
+    }
+}
+
+.neon-text {
+    animation: neon-glow 2s ease-in-out infinite;
+}
+
+/* ===== SLIDE ANIMATIONS ===== */
+@keyframes slide-in-left {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.slide-in-left {
+    animation: slide-in-left 0.8s ease-out;
+}
+
+@keyframes slide-in-right {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.slide-in-right {
+    animation: slide-in-right 0.8s ease-out;
+}
+
+@keyframes slide-in-up {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.slide-in-up {
+    animation: slide-in-up 0.8s ease-out;
+}
+
+@keyframes slide-in-down {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.slide-in-down {
+    animation: slide-in-down 0.8s ease-out;
+}
+
+/* ===== FADE ANIMATIONS ===== */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fade-in 1s ease-out;
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fade-in-up 0.8s ease-out;
+}
+
+@keyframes fade-in-down {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-down {
+    animation: fade-in-down 0.8s ease-out;
+}
+
+/* ===== BOUNCE ANIMATIONS ===== */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.bounce {
+    animation: bounce 3s ease-in-out infinite;
+}
+
+/* ===== SHAKE ANIMATIONS ===== */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+/* ===== RIPPLE EFFECT ===== */
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.ripple:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+}
+
+/* ===== TYPEWRITER EFFECT ===== */
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typewriter 3s steps(40, end);
+}
+
+/* ===== LOADING BAR ANIMATION ===== */
+@keyframes loading-bar {
+    0% {
+        width: 0;
+        left: 0;
+    }
+    50% {
+        width: 100%;
+        left: 0;
+    }
+    100% {
+        width: 0;
+        left: 100%;
+    }
+}
+
+.loading-bar-animated {
+    position: relative;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+.loading-bar-animated::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    background: var(--gradient);
+    animation: loading-bar 2s linear infinite;
+}
+
+/* ===== PARTICLE FLOAT ===== */
+@keyframes particle-float {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(10px, -10px);
+    }
+    50% {
+        transform: translate(-5px, -20px);
+    }
+    75% {
+        transform: translate(-15px, -5px);
+    }
+}
+
+.particle-float {
+    animation: particle-float 20s infinite linear;
+}
+
+/* ===== BLINKING ===== */
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.blink {
+    animation: blink 1s infinite;
+}
+
+/* ===== SPINNER ===== */
+@keyframes spinner-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spinner-rotate 1s linear infinite;
+}
+
+/* ===== WAVE ANIMATION ===== */
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(5px);
+    }
+}
+
+.wave {
+    animation: wave 2s ease-in-out infinite;
+}
+
+/* ===== ZOOM IN/OUT ===== */
+@keyframes zoom-in {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.zoom-in {
+    animation: zoom-in 0.5s ease-out;
+}
+
+@keyframes zoom-out {
+    from {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.zoom-out {
+    animation: zoom-out 0.5s ease-out;
+}
+
+/* ===== FLIP ANIMATIONS ===== */
+@keyframes flip-in-x {
+    from {
+        transform: perspective(400px) rotateX(90deg);
+        opacity: 0;
+    }
+    to {
+        transform: perspective(400px) rotateX(0);
+        opacity: 1;
+    }
+}
+
+.flip-in-x {
+    animation: flip-in-x 0.6s ease-out;
+}
+
+@keyframes flip-in-y {
+    from {
+        transform: perspective(400px) rotateY(90deg);
+        opacity: 0;
+    }
+    to {
+        transform: perspective(400px) rotateY(0);
+        opacity: 1;
+    }
+}
+
+.flip-in-y {
+    animation: flip-in-y 0.6s ease-out;
+}
+
+/* ===== LIGHTSABER EFFECT ===== */
+@keyframes lightsaber {
+    0% {
+        box-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary), 0 0 15px var(--primary);
+    }
+    50% {
+        box-shadow: 0 0 20px var(--primary), 0 0 30px var(--primary), 0 0 40px var(--primary);
+    }
+    100% {
+        box-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary), 0 0 15px var(--primary);
+    }
+}
+
+.lightsaber {
+    animation: lightsaber 2s infinite;
+}
+
+/* ===== STAR TWINKLE ===== */
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.twinkle {
+    animation: twinkle 3s infinite;
+}
+
+/* ===== GRADIENT SHIFT ===== */
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.gradient-shift {
+    background: linear-gradient(135deg, #00f3ff, #ff2a6d, #9d00ff, #00f3ff);
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+}
+
+/* ===== HOVER LIFT ===== */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== HOVER GLOW ===== */
+.hover-glow {
+    transition: box-shadow 0.3s ease;
+}
+
+.hover-glow:hover {
+    box-shadow: var(--shadow-glow);
+}
